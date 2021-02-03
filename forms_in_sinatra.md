@@ -4,7 +4,7 @@ The following is a summary which is specifically applicable to Sinatra apps. I g
 - [HTML elements and attributes needed to send a form](#html-elements-and-attributes-needed-to-send-a-form)
 - [Sending a form using a GET request](#sending-a-form-using-a-get-request)
 - [Different ways to format the user input field](#different-ways-to-format-the-user-input-field)
-- [Using Rack modules and methods to simulate input data for testing](#using-rack-modules-and-methods-to-simulate-input-data-for-testing)
+- [Simulating input data for testing](#simulating-input-data-for-testing)
 
 
 ### HTML elements and attributes needed to send a form
