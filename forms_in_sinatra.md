@@ -124,13 +124,9 @@ Example:
   <input type="text" list="cities" id="city" name="city">
 
   <datalist id="cities">
-    <option value="New York City"></option>
     <option value="London"></option>
     <option value="Barcelona"></option>
     <option value="Quebec City"></option>
-    <option value="Tokyo"></option>
-    <option value="Mexico City"></option>
-    <option value="Melbourne"></option>
     <option value="Cape Town"></option>
   </datalist>
 </form>
