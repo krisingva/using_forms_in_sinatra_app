@@ -1,6 +1,6 @@
 ## A beginner's guide to implementing forms in a Rack-based Sinatra application
 
-The following is a summary of information I gathered going through Launch School's RB175 Networked Applications course, which includes a few tutorials of building web applications using the Sinatra framework. The aim was to create beginner-friendly documentation on how to implement forms in a Sinatra app. To get the most use out of this summary, you should know the basics of HTTP request-response cycles and how to build a simple Sinatra app with view templates and routes.
+The following is a summary of information I gathered going through Launch School's RB175 Networked Applications course, which includes a few tutorials of building web applications using the Sinatra framework. The aim was to create beginner-friendly documentation on how to implement forms in a Sinatra app. To get the most use out of this summary, you should know the basics of HTTP request-response cycles and how to build a simple Sinatra app with view templates and routes. Familiarity with building a test suite using MiniTest will also be useful for the last section.
 
 These are the topics covered:
 - [HTML elements and attributes needed to send a form](#html-elements-and-attributes-needed-to-send-a-form)
