@@ -1,6 +1,8 @@
-## A beginner's guide to using forms within a Rack-based Sinatra application
+## A beginner's guide to implementing forms in a Rack-based Sinatra application
 
-The following is a summary which is specifically applicable to Sinatra apps. I gathered this information going through a few tutorials of building a web app from Launch School's RB175 Networked Applications course, as well as building my first one from scratch. The following topics are covered in this summary:
+The following is a summary of information I gathered going through Launch School's RB175 Networked Applications course, which includes a few tutorials of building web applications using the Sinatra framework. The aim was to create beginner-friendly documentation on how to implement forms in a Sinatra app. To get the most use out of this summary, you should know the basics of HTTP request-response cycles and how to build a simple Sinatra app with view templates and routes.
+
+These are the topics covered:
 - [HTML elements and attributes needed to send a form](#html-elements-and-attributes-needed-to-send-a-form)
 - [Sending a form using a GET request](#sending-a-form-using-a-get-request)
 - [Different ways to format the user input field](#different-ways-to-format-the-user-input-field)
@@ -104,13 +106,14 @@ To create a dropdown menu, add `<option>` elements (each with a `value` attribut
 
 Example:
 ```html
-<form>
+<form method="post" action="/new">
   <label for="activity">What should we do after dinner?</label>
   <select id="activity" name="activity">
-    <option value="movie">Watch a movie</option>
-    <option value="cards">Play Cards</option>
-    <option value="games">Play Board Games</option>
+    <option value="watch a movie">Watch a movie</option>
+    <option value="play cards">Play Cards</option>
+    <option value="play board games">Play Board Games</option>
     <option value="read">Read</option>
+    <input type="submit">
   </select>
 </form>
 ```
@@ -119,7 +122,7 @@ To be able to locate an option from a dropdown menu, use an `<input type="text">
 
 Example:
 ```html
-<form>
+<form method="post" action="/new">
   <label for="city">Where would you like to live?</label>
   <input type="text" list="cities" id="city" name="city">
 
