@@ -1,6 +1,6 @@
-## A beginner's guide to implementing forms in a Rack-based Sinatra application
+## Implementing forms in a Sinatra application
 
-The following is a summary of information I gathered going through Launch School's RB175 Networked Applications course, which includes a few tutorials of building web applications using the Sinatra framework. The aim was to create beginner-friendly documentation on how to implement forms in a Sinatra app. To get the most use out of this summary, you should know the basics of HTTP request-response cycles and how to build a simple Sinatra app with view templates and routes. Familiarity with building a test suite using MiniTest will also be useful for the last section.
+The following is a summary of information I gathered going through Launch School's RB175 Networked Applications course, including a few tutorials of building web applications using the Sinatra framework. The aim was to create beginner-friendly documentation on how to implement forms in a Sinatra app. To get the most use out of this summary, you should know the basics of HTTP request-response cycles and how to build a simple Sinatra app with view templates and routes. Familiarity with building a test suite using MiniTest will also be useful for the last section.
 
 These are the topics covered:
 - [HTML elements and attributes needed to send a form](#html-elements-and-attributes-needed-to-send-a-form)
@@ -11,7 +11,7 @@ These are the topics covered:
 
 ### HTML elements and attributes needed to send a form
 
-The minimal requirement for writing a form which will lead to a specific HTTP request being made, is to use a `<form>` element with `method` and `action` attributes. The value of the `method` attribute determines the type of HTTP request made when the form is sent, whereas the value of the `action` attribute determines where the request is sent (i.e., the path part of the route that will be invoked in response to the request). Capturing the input data and submitting the form can be accomplished in different ways. One of the simplest ways is by using an `<input>` element (opening tag only) with a `name` attribute. For example, if you have the following form in a template document:
+The minimal requirement for writing a form that will lead to a specific HTTP request, is to use a `<form>` element with `method` and `action` attributes. The value of the `method` attribute determines the type of HTTP request made when the form is sent, whereas the value of the `action` attribute determines where the request is sent. Capturing the input data and submitting the form can be accomplished in different ways. One of the simplest ways is using an `<input>` element (opening tag only) with a `name` attribute. For example, if you have the following form in a template document:
 
 ```html
 <form action="/new" method="post">
@@ -19,20 +19,20 @@ The minimal requirement for writing a form which will lead to a specific HTTP re
 </form>
 ```
 
-it will render a text box where the user can input information that upon pressing `Enter` will result in submitting the form data. This will be accomplished by sending a POST request which will lead to the following route being invoked from within the application code:
+it will render a text box where the user can input information that will result in submitting the form data upon pressing `Enter`. This will be accomplished by sending a POST request, which will lead to the following route being invoked from within the application code:
 
 ```ruby
 post "/new" do
 # ...
 end
 ```
-Within this route we can access the submitted form data using `params[:title]`.
+Within this route, we can access the submitted form data using `params[:title]`.
 
 **How does this work?**
 
 - The `name` attribute of the `<input>` tag defines how the application will identify the input data.
 - The submitted data will be captured in a `params` hash accessible inside our Sinatra route.
-- The value of the `<input>` element's `name` attribute (`"title"` in the above example) becomes a key in the `params` hash and the input data becomes the value for that key.
+- The value of the `<input>` element's `name` attribute (`"title"` in the above example) becomes a key in the `params` hash, and the input data becomes the value for that key.
 
 ### Sending a form using a GET request
 
@@ -66,18 +66,18 @@ In this scenario, we have buttons instead of links to send GET requests for a sp
 ### Different ways to format the user input field
 
 #### 1. Using the `<input>` element
-A single row input field can be achieved by using an `<input>` element (opening tag only). A `type` attribute can be added to an `<input>` element that will define what type of data it can accept and the type of input field that will be rendered.
+A single row input field can be achieved using an `<input>` element (opening tag only). A `type` attribute can be added to an `<input>` element that will define what type of data it can accept and the type of input field that will render.
 
 Examples:
 - `type=”text”` gives a text box.
 - `type=”submit”` gives a submit button.
 - `type="password"` gives a text box that renders each user input character as a `*` or a `.`.
 - `type="number"` will only allow number-based input.
-- `type="range"` will restrict the input to a specific range, can be used with `min`, `max` and `step` attributes.
+- `type="range"` will restrict the input to a specific range, can be used with `min`, `max`, and `step` attributes.
 - `type="checkbox"` will render a checkbox.
 - `type="radio"` will render radio buttons.
 
-To group many checkboxes or radio buttons together, assign the same value to the `name` attribute inside each `<input>` element.
+To group several checkboxes or radio buttons, assign the same value to the `name` attribute inside each `<input>` element.
 
 To pair an `<input>` element with a `<label>`, add an `id` attribute to the `<input>` that has the same value as the `for` attribute within the `<label>`.
 
@@ -100,7 +100,7 @@ Example:
 ```
 
 #### 2. Using elements other than `<input>`
-To be able to write in a longer text, use `<textarea>` instead of `<input>`. The `<textarea>` element can have `rows` and `cols` attributes that will dictate the size of the textbox.
+To be able to write in a longer text, use `<textarea>` instead of `<input>`. The `<textarea>` element can have `rows` and `cols` attributes that will dictate the textbox's size.
 
 To create a dropdown menu, add `<option>` elements (each with a `value` attribute) embedded inside of a `<select>` element.
 
@@ -240,3 +240,10 @@ puts last_request.env["rack.request.form_hash"]
 
 - `last_request.env` returns a hash containing information about the request.
 - Within this `env` hash is an item `"rack.request.form_hash"=>{"answer"=>"3"}`, where the string `"rack.request.form_hash"` is a key with a value of a hash that contains the data submitted in the form.
+
+### Summary
+- The following HTML elements can be used to create a simple form: a `<form>` element with `method` and `action` attributes and an embedded `<input>` element with a `name` attribute.
+- The form data is accessible inside the route as a key-value pair of the `params` hash. The value of the `<input>` element's `name` attribute becomes the key of the pair, and the user input becomes the value of the pair.
+- Forms can be used to submit a GET request. For example, it is appropriate to send a GET request when submitting a search box form.
+- When it comes to formatting the user input field, an `<input>` element with different values for the `type` attribute can give a wide variety of options. Other elements can be used for specific purposes, including `<textarea>` for a bigger textbox, and `<select>` or `<datalist>` with embedded `<option>` elements for a dropdown menu.
+- To be able to simulate user input in your tests, include Rack methods and define an `app` method that will start the application inside your test class. Inside an individual test, send the appropriate request while passing in the parameters to be tested as user input in a hash format.
