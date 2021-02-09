@@ -7,6 +7,7 @@ These are the topics covered:
 - [Sending a form using a GET request](#sending-a-form-using-a-get-request)
 - [Different ways to format the user input field](#different-ways-to-format-the-user-input-field)
 - [Simulating input data for testing](#simulating-input-data-for-testing)
+- [Summary](#summary)
 
 
 ### HTML elements and attributes needed to send a form
