@@ -1,1 +1,1 @@
-The summaries I have written as I learn new things.
+Technical article to help developers quickly learn how to use forms in a Sinatra application.
